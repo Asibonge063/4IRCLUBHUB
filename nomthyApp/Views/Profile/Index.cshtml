@@ -1,0 +1,69 @@
+﻿@model Profile
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Student Profile</h2>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-light">Edit Profile</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    @if (!string.IsNullOrEmpty(Model.ProfilePicturePath))
+                    {
+                        <img src="@Model.ProfilePicturePath" class="img-fluid rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;" alt="Profile Picture">
+                    }
+                    <h4>@Model.FirstName @Model.LastName</h4>
+                    <p class="text-muted">@Model.StudentNumber</p>
+
+                    <div class="mt-4">
+                        <img src="@Model.SchoolLogoPath" style="height: 50px;" alt="DUT Logo">
+                        <p class="mt-2">Durban University of Technology</p>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5>Academic Information</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <strong>Year:</strong> @Model.Year
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Course:</strong> @Model.Course
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5>Professional Links</h5>
+                            <ul class="list-group">
+                                @if (!string.IsNullOrEmpty(Model.GitHubUrl))
+                                {
+                                    <li class="list-group-item">
+                                        <i class="fab fa-github"></i>
+                                        <a href="@Model.GitHubUrl" target="_blank">GitHub Profile</a>
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.LinkedInUrl))
+                                {
+                                    <li class="list-group-item">
+                                        <i class="fab fa-linkedin"></i>
+                                        <a href="@Model.LinkedInUrl" target="_blank">LinkedIn Profile</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

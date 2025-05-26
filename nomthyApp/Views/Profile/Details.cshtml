@@ -1,0 +1,83 @@
+﻿@model Profile
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h2>My Profile</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    @if (!string.IsNullOrEmpty(Model.ProfilePicturePath))
+                    {
+                        <img src="@Model.ProfilePicturePath" class="img-fluid rounded-circle mb-3" style="max-height: 200px;" alt="Profile Picture" />
+                    }
+                    else
+                    {
+                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 200px; height: 200px;">
+                            <i class="fas fa-user fa-5x text-secondary"></i>
+                        </div>
+                    }
+                    <a asp-action="Edit" class="btn btn-primary btn-block">Edit Profile</a>
+                </div>
+                <div class="col-md-9">
+                    <h3>@Model.FirstName @Model.LastName</h3>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-3">Student Number</dt>
+                        <dd class="col-sm-9">@Model.StudentNumber</dd>
+
+                        <dt class="col-sm-3">Year</dt>
+                        <dd class="col-sm-9">@GetYearName(Model.Year)</dd>
+
+                        <dt class="col-sm-3">Course</dt>
+                        <dd class="col-sm-9">@Model.Course</dd>
+
+                        @if (!string.IsNullOrEmpty(Model.GitHubUrl))
+                        {
+                            <dt class="col-sm-3">GitHub</dt>
+                            <dd class="col-sm-9"><a href="@Model.GitHubUrl" target="_blank">@Model.GitHubUrl</a></dd>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.LinkedInUrl))
+                        {
+                            <dt class="col-sm-3">LinkedIn</dt>
+                            <dd class="col-sm-9"><a href="@Model.LinkedInUrl" target="_blank">@Model.LinkedInUrl</a></dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetYearName(int year)
+    {
+        return year switch
+        {
+            1 => "First Year",
+            2 => "Second Year",
+            3 => "Third Year",
+            4 => "Fourth Year",
+            5 => "Advanced",
+            6 => "Honours",
+            _ => "Unknown"
+        };
+    }
+}
+
+@section Scripts {
+    <script>
+        // Show success message if redirected from create
+        $(document).ready(function() {
+            if (window.location.search.includes('created=true')) {
+                toastr.success('Profile created successfully!');
+            }
+        });
+    </script>
+}

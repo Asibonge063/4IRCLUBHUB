@@ -1,0 +1,724 @@
+﻿@{
+    ViewBag.Title = "4IR Hub Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To 4IR Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4b6cb7;
+            --secondary-color: #182848;
+            --accent-color: #3a86ff;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --junior-color: #4cc9f0;
+            --junior-senior-color: #4895ef;
+            --senior-color: #4361ee;
+            --head-color: #3a0ca3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section .lead {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Category Cards */
+        .category-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .category-card {
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            color: white;
+            text-align: center;
+        }
+
+        .junior-card {
+            background: linear-gradient(135deg, var(--junior-color), #38a3d1);
+        }
+
+        .junior-senior-card {
+            background: linear-gradient(135deg, var(--junior-senior-color), #3d7ed6);
+        }
+
+        .senior-card {
+            background: linear-gradient(135deg, var(--senior-color), #3a56e8);
+        }
+
+        .head-card {
+            background: linear-gradient(135deg, var(--head-color), #2d0a9e);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .category-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .category-card .btn {
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+            .category-card .btn:hover {
+                background-color: rgba(255,255,255,0.3);
+            }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+
+            .feature-box:hover {
+                transform: translateY(-5px);
+            }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+            margin-top: -5rem;
+            padding-top: 8rem;
+        }
+
+        .resource-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+            .resource-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(255,255,255,0.3);
+            }
+
+        .resource-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* Members Section */
+        .members-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .member-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+            .member-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            }
+
+        .member-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--dark-color);
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+
+            .social-links a:hover {
+                color: var(--accent-color);
+            }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 0;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+            .footer-links a:hover {
+                color: white;
+            }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Adjustments */
+        @@media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .lead {
+                font-size: 1.2rem;
+            }
+
+            .hero-section {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+                padding: 4rem 0 3rem;
+            }
+
+            .resources-section {
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+                padding-top: 6rem;
+            }
+        }
+
+        /* Animation */
+        @@keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>4IR Innovation Hub</h1>
+                <p class="lead">Connect, Collaborate & Create with Fellow Tech Enthusiasts</p>
+                <div class="mt-4">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Index", "Dashboard")" class="btn btn-primary">Go to Dashboard</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Register", "Account", new { area = "Identity" })" class="btn btn-primary">Join Our Community</a>
+                        <a href="@Url.Action("Login", "Account", new { area = "Identity" })" class="btn btn-outline-light">Member Login</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-4 mb-3">Member Categories</h2>
+                    <p class="lead">Connect with members at your level</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Junior Card -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="category-card junior-card">
+                        <i class="fas fa-user-graduate category-icon"></i>
+                        <h3>Junior Members</h3>
+                        <p>Entry-level innovators starting their 4IR journey</p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Junior", "Members")" class="btn">Explore</a>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn">Enter</a>
+                        }
+                    </div>
+                </div>
+
+                <!-- Junior Senior Card -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="category-card junior-senior-card">
+                        <i class="fas fa-user-tie category-icon"></i>
+                        <h3>Junior Seniors</h3>
+                        <p>Growing innovators with intermediate experience</p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("JuniorSenior", "Members")" class="btn">Explore</a>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn">Enter</a>
+                        }
+                    </div>
+                </div>
+
+                <!-- Senior Card -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="category-card senior-card">
+                        <i class="fas fa-user-ninja category-icon"></i>
+                        <h3>Main Seniors</h3>
+                        <p>Advanced innovators leading projects</p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Senior", "Members")" class="btn">Explore</a>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn">Enter</a>
+                        }
+                    </div>
+                </div>
+
+                <!-- Head Card -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="category-card head-card">
+                        <i class="fas fa-user-astronaut category-icon"></i>
+                        <h3>Heads</h3>
+                        <p>Leadership team guiding the hub</p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Head", "Members")" class="btn">Explore</a>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn">Enter</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-4 mb-3">Hub Features</h2>
+                    <p class="lead">Everything you need to collaborate and grow</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h3>Member Network</h3>
+                        <p>Connect with other innovators across different experience levels and skill sets.</p>
+                        <a href="#" class="btn btn-primary">Join Network</a>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-book feature-icon"></i>
+                        <h3>Resource Library</h3>
+                        <p>Access tutorials, research papers, and learning materials shared by members.</p>
+                        <a href="#" class="btn btn-primary">Access Resources</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-calendar-alt feature-icon"></i>
+                        <h3>Events & Workshops</h3>
+                        <p>Participate in hackathons, seminars, and skill-building sessions.</p>
+                        <a href="#" class="btn btn-primary">Explore information</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-bullhorn feature-icon"></i>
+                        <h3>Opportunities Board</h3>
+                        <p>Find internships, jobs, and research opportunities in 4IR fields.</p>
+                        <a href="#" class="btn btn-primary">Join Network</a>
+                    </div>
+                </div>
+
+               
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-4 mb-3">Featured Resources</h2>
+                    <p class="lead">Latest learning materials shared by members</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="resource-card">
+                        <i class="fas fa-file-code resource-icon"></i>
+                        <h4>AI Fundamentals</h4>
+                        <p>Comprehensive guide to machine learning basics by our Senior members.</p>
+                        <a href="#" class="text-white">View Resource →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="resource-card">
+                        <i class="fas fa-robot resource-icon"></i>
+                        <h4>Robotics Workshop</h4>
+                        <p>Materials from last month's hands-on robotics session.</p>
+                        <a href="#" class="text-white">View Resource →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="resource-card">
+                        <i class="fas fa-network-wired resource-icon"></i>
+                        <h4>IoT Project Guide</h4>
+                        <p>Step-by-step tutorial for building your first IoT device.</p>
+                        <a href="#" class="text-white">View Resource →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="@Url.Action("Index", "Resources")" class="btn btn-primary">View All Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section class="members-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-4 mb-3">Featured Members</h2>
+                    <p class="lead">Connect with innovators in our community</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Sample Member 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="member-card">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Member" class="member-img">
+                        <div class="member-info">
+                            <h5 class="member-name">Sarah Johnson</h5>
+                            <p class="member-role">Junior Senior - AI Specialist</p>
+                            <p class="small">Working on NLP applications</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Member 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="member-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Member" class="member-img">
+                        <div class="member-info">
+                            <h5 class="member-name">Michael Chen</h5>
+                            <p class="member-role">Main Senior - Robotics</p>
+                            <p class="small">Leading autonomous systems project</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Member 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="member-card">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Member" class="member-img">
+                        <div class="member-info">
+                            <h5 class="member-name">Amina Diallo</h5>
+                            <p class="member-role">Junior - Web Development</p>
+                            <p class="small">Learning full-stack development</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Member 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="member-card">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Member" class="member-img">
+                        <div class="member-info">
+                            <h5 class="member-name">David Wilson</h5>
+                            <p class="member-role">Head - Hub Coordinator</p>
+                            <p class="small">Industry partnerships lead</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="@Url.Action("Index", "Members")" class="btn btn-primary">Browse All Members</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Stay Updated</h2>
+                    <p class="lead mb-5">Subscribe to our newsletter for hub announcements, events, and opportunities</p>
+                    <form class="newsletter-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your email address" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                        <small class="text-muted">We'll never share your email. Unsubscribe anytime.</small>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3>4IR Innovation Hub</h3>
+                    <p>Connecting tomorrow's technology leaders today. A platform for collaboration, learning, and innovation in Fourth Industrial Revolution technologies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="@Url.Action("Index", "Home")">Home</a>
+                        <a href="@Url.Action("About", "Home")">About</a>
+                        <a href="@Url.Action("Index", "Members")">Members</a>
+                        <a href="@Url.Action("Index", "Projects")">Projects</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Categories</h5>
+                    <div class="footer-links">
+                        <a href="@Url.Action("Junior", "Members")">Junior Members</a>
+                        <a href="@Url.Action("JuniorSenior", "Members")">Junior Seniors</a>
+                        <a href="@Url.Action("Senior", "Members")">Main Seniors</a>
+                        <a href="@Url.Action("Head", "Members")">Heads</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> University Innovation Center, Tech Park</p>
+                    <p><i class="fas fa-envelope me-2"></i> contact@4irhub.edu</p>
+                    <p><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+
+            <div class="copyright text-center">
+                <p>&copy; @DateTime.Now.Year 4IR Innovation Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation for elements when they come into view
+        $(window).scroll(function() {
+            $('.category-card, .feature-box, .resource-card, .member-card').each(function() {
+                var cardPosition = $(this).offset().top;
+                var scrollPosition = $(window).scrollTop() + $(window).height();
+
+                if (scrollPosition > cardPosition + 100) {
+                    $(this).css('opacity', '1').css('transform', 'translateY(0)');
+                }
+            });
+        });
+
+        // Initialize elements as invisible
+        $(document).ready(function() {
+            $('.category-card, .feature-box, .resource-card, .member-card').css({
+                'opacity': '0',
+                'transform': 'translateY(30px)',
+                'transition': 'all 0.6s ease-out'
+            });
+
+            // Trigger scroll once to check initial positions
+            $(window).trigger('scroll');
+        });
+    </script>
+</body>
+</html>
